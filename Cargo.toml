@@ -1,0 +1,15 @@
+[package]
+name = "sea_orm_newtype"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+sea_orm_newtype_derive = { path = "sea_orm_newtype_derive" }
+sea-orm = "^0"
+
+[dev-dependencies]
+uuid = "1.4.1"
+email_address = "0.2.4"
+thiserror = "1.0.44"
