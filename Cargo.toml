@@ -14,7 +14,7 @@ categories = ["database"]
 keywords = ["sea-orm"]
 
 [dependencies]
-sea-orm-newtype-derive = { path = "sea-orm-newtype-derive" }
+sea-orm-newtype-derive = { version = "0.0.1", path = "sea-orm-newtype-derive" }
 sea-orm = "^0"
 
 [dev-dependencies]
