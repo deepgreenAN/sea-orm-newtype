@@ -3,7 +3,6 @@ use uuid::Uuid;
 
 use sea_orm_newtype::DeriveNewType;
 
-// 意味は無いけどTにトレイト境界をつけておく
 #[derive(Debug, Clone, PartialEq, DeriveNewType)]
 #[sea_orm_newtype(from_into = "Uuid", primary_key)]
 pub struct Id<T>(Uuid, PhantomData<T>);
