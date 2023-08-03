@@ -300,15 +300,34 @@ fn try_from_u64_for_newtype(
 ) -> TokenStream {
     let (impl_generics, ty_generics, where_clause) = generics.split_for_impl();
 
-    let base_type_name = convert_type.ident();
+    let try_from_u64_block = match convert_type {
+        FromInto(base_type_name) => {
+            quote! {
+                Ok(
+                    Into::<Self>::into(<#base_type_name as ::sea_orm_newtype::TryFromU64>::try_from_u64(n)?)
+                )
+            }
+        }
+        TryFromInto(base_type_name) => {
+            quote! {
+                TryInto::<Self>::try_into(<#base_type_name as ::sea_orm_newtype::TryFromU64>::try_from_u64(n)?)
+                    .map_err(|e| ::sea_orm_newtype::sea_orm::DbErr::Custom(e.to_string()))
+            }
+        }
+        Transparent(base_type_name) => {
+            quote! {
+                Ok(
+                    #new_type_name(<#base_type_name as ::sea_orm_newtype::TryFromU64>::try_from_u64(n)?)
+                )
+            }
+        }
+    };
 
     quote! {
         impl #impl_generics ::sea_orm_newtype::TryFromU64 for #new_type_name #ty_generics #where_clause
         {
             fn try_from_u64(n: u64) -> Result<Self, ::sea_orm_newtype::sea_orm::DbErr> {
-                Ok(
-                    Into::<Self>::into(<#base_type_name as ::sea_orm_newtype::TryFromU64>::try_from_u64(n)?)
-                )
+                #try_from_u64_block
             }
         }
     }

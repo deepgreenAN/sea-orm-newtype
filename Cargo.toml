@@ -1,12 +1,20 @@
+[workspace]
+members = [".", "sea-orm-newtype-derive"]
+
 [package]
-name = "sea_orm_newtype"
+name = "sea-orm-newtype"
 version = "0.0.1"
 edition = "2021"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+authors = ["Asami <asami73dgreen63@gmail.com>"]
+description = "helper crate to implement new-type pattern for sea-orm"
+license = "MIT"
+repository = "https://github.com/deepgreenAN/sea-orm-newtype"
+readme = "README.md"
+categories = ["database"]
+keywords = ["sea-orm"]
 
 [dependencies]
-sea_orm_newtype_derive = { path = "sea_orm_newtype_derive" }
+sea-orm-newtype-derive = { path = "sea-orm-newtype-derive" }
 sea-orm = "^0"
 
 [dev-dependencies]

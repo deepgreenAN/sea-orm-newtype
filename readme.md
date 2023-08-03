@@ -1,5 +1,8 @@
 # sea-orm-newtype
 
+[![crates.io](https://img.shields.io/crates/v/sea-orm-newtype.svg)](https://crates.io/crates/sea-orm-newtype)
+[![docs.rs](https://docs.rs/sea-orm-newtype/badge.svg)](https://docs.rs/sea-orm-newtype)
+
 This crate provides helper derive macro to implement [new-type pattern](https://www.sea-ql.org/SeaORM/docs/generate-entity/newtype/) for sea-orm. From sea-orm @ 0.12.x, you can use [DeriveValueType](https://docs.rs/sea-orm/0.12.1/sea_orm/derive.DeriveValueType.html) macro. Please check it too.
 
 ## Example
